@@ -2,6 +2,7 @@ import sys
 import time
 import importlib
 from pathlib import Path
+import gmpy2
 from utils import find_max_n, log, DEBUG
 from analyse import plot
 
@@ -80,11 +81,17 @@ def main():
             if points[-1] != N: points.append(N)
 
         # execute only the calculated points
+        correct = True
         for n in points:
             try:
                 start_time = time.perf_counter()
-                _ = func(n)
+                result = func(n)
                 elapsed = time.perf_counter() - start_time
+
+                if int(result) != int(gmpy2.fib(n)):
+                    if DEBUG: log(f'incorrect result at {n}')
+                    correct = False
+                    break
 
                 if elapsed > time_limit: break
                 
@@ -92,6 +99,8 @@ def main():
                 
             except RecursionError:
                 break
+
+        if DEBUG: log(f'correctness check {"[green]passed[/green]" if correct else "[red]failed[/red]"}')
 
         data[label] = (points[:len(times)], times)
 
