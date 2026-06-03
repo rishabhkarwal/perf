@@ -7,6 +7,11 @@
 A collection of highly optimised implementations of classical mathematical programming problems, exploring the limits of algorithmic efficiency in pure Python.
 
 ---
+### Environment
+```bash
+python -m venv venv
+source venv/bin/activate  # windows: venv\Scripts\activate
+```
 
 ### Dependencies
 ```bash
