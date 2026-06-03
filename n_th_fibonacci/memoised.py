@@ -1,0 +1,11 @@
+import sys
+sys.setrecursionlimit(1_000_000) # arbitrary
+
+cache = {0: 0, 1: 1}
+
+def f(n):
+    if n in cache: return cache[n]
+    
+    cache[n] = f(n - 1) + f(n - 2)
+
+    return cache[n]
