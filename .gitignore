@@ -1,3 +1,6 @@
 # Python
 __pycache__/
 venv/
+
+# Generated plots
+plots/

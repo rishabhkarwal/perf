@@ -2,6 +2,7 @@ import time
 import multiprocessing
 from rich.console import Console
 
+
 _console = Console()
 log      = _console.print
 
